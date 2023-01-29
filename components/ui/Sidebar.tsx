@@ -1,13 +1,15 @@
 import { Drawer } from '@mui/material'
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 
-interface SidebarProps {}
+interface SidebarProps {
+  isOpen: boolean
+  onClose: () => void
+}
 
-export const Sidebar: FC<SidebarProps> = ({}) => {
-  const [open, setOpen] = useState<boolean>(true)
+export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
     <>
-      <Drawer anchor={'left'} open={open} onClose={() => setOpen(o => !o)}>
+      <Drawer anchor={'left'} open={isOpen} onClose={onClose}>
         list
       </Drawer>
     </>
