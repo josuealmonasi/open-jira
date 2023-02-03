@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import { NavBar } from 'components/ui'
 import Head from 'next/head'
-import React, { FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 interface LayoutProps {
   title?: 'string'

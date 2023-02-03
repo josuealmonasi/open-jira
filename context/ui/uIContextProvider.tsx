@@ -1,5 +1,5 @@
-import React, { FC, PropsWithChildren, useReducer } from 'react'
-import { UIReducer, UIContext } from 'context/ui'
+import { UIContext, UIReducer } from 'context/ui'
+import { FC, PropsWithChildren, useReducer } from 'react'
 
 export interface UIState {
   sideMenuOpen: boolean

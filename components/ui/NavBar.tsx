@@ -1,8 +1,8 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
-import React, { FC, useContext } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
 import { Sidebar } from 'components/ui'
 import { UIContext } from 'context/ui'
+import { FC, useContext } from 'react'
 
 export const NavBar: FC = () => {
   const { sideMenuOpen, openSideMenu, closeSideMenu } = useContext(UIContext)

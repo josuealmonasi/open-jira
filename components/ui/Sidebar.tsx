@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material'
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 interface SidebarProps {
   isOpen: boolean
