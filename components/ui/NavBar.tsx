@@ -1,17 +1,18 @@
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
-import React, { FC, useState } from 'react'
+import React, { FC, useContext } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
 import { Sidebar } from 'components/ui'
+import { UIContext } from 'context/ui'
 
 export const NavBar: FC = () => {
-  const [openSideBar, setOpenSideBar] = useState<boolean>(false)
+  const { sideMenuOpen, openSideMenu, closeSideMenu } = useContext(UIContext)
 
   const handleOnClose = (): void => {
-    setOpenSideBar(false)
+    closeSideMenu()
   }
 
   const handleOpen = (): void => {
-    setOpenSideBar(true)
+    openSideMenu()
   }
 
   return (
@@ -38,7 +39,7 @@ export const NavBar: FC = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Sidebar isOpen={openSideBar} onClose={handleOnClose} />
+      <Sidebar isOpen={sideMenuOpen} onClose={handleOnClose} />
     </>
   )
 }

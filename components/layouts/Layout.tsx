@@ -15,6 +15,7 @@ export const Layout: FC<LayoutProps> = ({ title = 'Open Jira', children }) => (
     </Head>
 
     <NavBar />
+
     <Box sx={{ padding: '10px 20px' }}>{children}</Box>
   </Box>
 )
