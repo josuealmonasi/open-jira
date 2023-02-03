@@ -4,11 +4,11 @@ import Head from 'next/head'
 import { FC, ReactNode } from 'react'
 
 interface LayoutProps {
-  title?: 'string'
+  title?: string
   children?: ReactNode | undefined
 }
 
-export const Layout: FC<LayoutProps> = ({ title = 'Open Jira', children }) => (
+export const Layout: FC<LayoutProps> = ({ title = 'Open - Jira', children }) => (
   <Box sx={{ flexGrow: 1 }}>
     <Head>
       <title>{title}</title>
