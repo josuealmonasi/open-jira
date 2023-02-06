@@ -1,7 +1,7 @@
 import MenuIcon from '@mui/icons-material/Menu'
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
 import { Sidebar } from 'components/ui'
-import { UIContext } from '../../context/ui'
+import { UIContext } from 'context/ui/UIContext'
 import { FC, useContext } from 'react'
 
 export const NavBar: FC = () => {
