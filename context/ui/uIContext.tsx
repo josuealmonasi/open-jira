@@ -1,10 +1,10 @@
 import { createContext } from 'react'
 
-export interface UIContextType {
+interface IUIContext {
   sideMenuOpen: boolean
   /* Methods */
   closeSideMenu: () => void
   openSideMenu: () => void
 }
 
-export const UIContext = createContext({} as UIContextType)
+export const UIContext = createContext({} as IUIContext)

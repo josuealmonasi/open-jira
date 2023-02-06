@@ -8,12 +8,12 @@ import {
 } from '@mui/material'
 import { FC } from 'react'
 
-interface SidebarProps {
+interface ISidebarProps {
   isOpen: boolean
   onClose: () => void
 }
 
-export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
+export const Sidebar: FC<ISidebarProps> = ({ isOpen, onClose }) => {
   return (
     <>
       <Drawer anchor={'left'} open={isOpen} onClose={onClose}>
