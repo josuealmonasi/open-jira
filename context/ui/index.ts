@@ -1,3 +1,3 @@
-export * from 'context/ui/UIContext'
-export * from 'context/ui/UIContextProvider'
-export * from 'context/ui/UIReducer'
+export * from 'context/ui/uIContext'
+export * from 'context/ui/uIContextProvider'
+export * from 'context/ui/uIReducer'
