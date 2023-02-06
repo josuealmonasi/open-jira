@@ -1,5 +1,5 @@
-import { FC, useReducer, PropsWithChildren } from 'react'
 import { EntriesContext, EntriesReducer } from 'context/entries'
+import { FC, PropsWithChildren, useReducer } from 'react'
 
 export interface EntriesProviderState {
   entries: []
