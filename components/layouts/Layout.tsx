@@ -16,6 +16,6 @@ export const Layout: FC<ILayoutProps> = ({ title = 'Open - Jira', children }) =>
 
     <NavBar />
 
-    <Box sx={{ padding: '10px 20px' }}>{children}</Box>
+    <Box sx={{ padding: '10px 20px', backgroundColor: '#FFFFFF' }}>{children}</Box>
   </Box>
 )

@@ -1,15 +1,39 @@
 import { EntriesContext, EntriesReducer } from 'context/entries'
+import { Entry } from 'interfaces'
 import { FC, PropsWithChildren, useReducer } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 export interface EntriesProviderState {
-  entries: []
+  entries: Entry[]
 }
 
 const INITIAL_STATE: EntriesProviderState = {
-  entries: [],
+  entries: [
+    {
+      _id: uuidv4(),
+      description:
+        'Mollit nostrud irure exercitation ad est voluptate nulla reprehenderit amet ipsum et ut duis ipsum.',
+      status: 'pending',
+      createdAt: Date.now(),
+    },
+    {
+      _id: uuidv4(),
+      description:
+        'Dolor veniam fugiat proident nostrud exercitation consequat pariatur ea Lorem incididunt qui ex.',
+      status: 'in-progress',
+      createdAt: Date.now() - 100000,
+    },
+    {
+      _id: uuidv4(),
+      description:
+        'Incididunt fugiat consequat cupidatat mollit ex exercitation veniam eu tempor laboris.',
+      status: 'completed',
+      createdAt: Date.now() + 200000,
+    },
+  ],
 }
 
-export const EntriesProviderProvider: FC<PropsWithChildren> = ({ children }) => {
+export const EntriesProvider: FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(EntriesReducer, INITIAL_STATE)
   return (
     <EntriesContext.Provider value={{ ...state }}>{children}</EntriesContext.Provider>
