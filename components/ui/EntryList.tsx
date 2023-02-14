@@ -2,7 +2,7 @@ import { List, Paper } from '@mui/material'
 import { EntryCard } from 'components/ui'
 import { EntriesContext } from 'context/entries'
 import { EntryStatus } from 'interfaces'
-import { FC, PropsWithChildren, useContext } from 'react'
+import { FC, PropsWithChildren, useContext, useMemo } from 'react'
 
 type EntryListProps = {
   status: EntryStatus
@@ -11,7 +11,10 @@ type EntryListProps = {
 export const EntryList: FC<EntryListProps> = ({ status }) => {
   const { entries } = useContext(EntriesContext)
 
-  const filteredEntries = entries.filter(e => e.status === status) || []
+  const filteredEntries = useMemo(
+    () => entries.filter(e => e.status === status) || [],
+    [entries, status],
+  )
 
   return (
     <div>
