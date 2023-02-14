@@ -14,21 +14,21 @@ const INITIAL_STATE: EntriesProviderState = {
       description:
         'Mollit nostrud irure exercitation ad est voluptate nulla reprehenderit amet ipsum et ut duis ipsum.',
       status: 'pending',
-      createdAt: Date.now(),
+      createdAt: 1676338569244,
     },
     {
       _id: uuidv4(),
       description:
         'Dolor veniam fugiat proident nostrud exercitation consequat pariatur ea Lorem incididunt qui ex.',
       status: 'in-progress',
-      createdAt: Date.now() - 100000,
+      createdAt: 1676338569244 - 100000,
     },
     {
       _id: uuidv4(),
       description:
         'Incididunt fugiat consequat cupidatat mollit ex exercitation veniam eu tempor laboris.',
       status: 'completed',
-      createdAt: Date.now() + 200000,
+      createdAt: 1676338569244 + 200000,
     },
   ],
 }

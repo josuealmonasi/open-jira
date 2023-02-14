@@ -13,7 +13,6 @@ export const EntryList: FC<EntryListProps> = ({ status }) => {
 
   const filteredEntries = entries.filter(e => e.status === status) || []
 
-  console.log(filteredEntries)
   return (
     <div>
       <Paper
@@ -25,8 +24,8 @@ export const EntryList: FC<EntryListProps> = ({ status }) => {
         }}
       >
         <List sx={{ opacity: 1 }}>
-          {entries.map((e, index) => (
-            <EntryCard key={index} entry={e} />
+          {filteredEntries.map(e => (
+            <EntryCard key={e._id} entry={e} />
           ))}
         </List>
       </Paper>
