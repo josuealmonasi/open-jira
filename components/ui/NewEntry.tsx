@@ -22,6 +22,10 @@ export const NewEntry: FC<INewEntryProps> = ({}) => {
     setIsAdding(false)
   }
 
+  const handleOnSave = () => {
+    console.log({ inputValue })
+  }
+
   return (
     <Box>
       {isAdding ? (
@@ -41,7 +45,12 @@ export const NewEntry: FC<INewEntryProps> = ({}) => {
           />
 
           <Box display={'flex'} justifyContent={'space-between'}>
-            <Button variant='outlined' color='success' startIcon={<SaveIcon />}>
+            <Button
+              variant='outlined'
+              color='success'
+              startIcon={<SaveIcon />}
+              onClick={handleOnSave}
+            >
               Save
             </Button>
 
