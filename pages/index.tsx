@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, Grid } from '@mui/material'
 import { Layout } from 'components/layouts'
-import { EntryList } from 'components/ui'
+import { EntryList, NewEntry } from 'components/ui'
 import { NextPage } from 'next'
 
 const HomePage: NextPage = () => {
@@ -19,6 +19,8 @@ const HomePage: NextPage = () => {
             <CardHeader title='Pending' />
 
             <CardContent sx={{ margin: 0, padding: 0 }}>
+              <NewEntry />
+
               <EntryList status='pending' />
             </CardContent>
           </Card>
