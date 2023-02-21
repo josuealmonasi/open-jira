@@ -1,7 +1,9 @@
 import { EntriesProviderState } from 'context/entries'
+import { Entry } from 'interfaces'
 
 type EntriesActiontype = {
-  type: 'test'
+  type: '[Entry] - Add Entry'
+  payload: Entry
 }
 
 export const EntriesReducer = (
@@ -9,8 +11,8 @@ export const EntriesReducer = (
   action: EntriesActiontype,
 ): EntriesProviderState => {
   switch (action.type) {
-    case 'test':
-      return { ...state }
+    case '[Entry] - Add Entry':
+      return { ...state, entries: [...state.entries, action.payload] }
     default:
       return state
   }

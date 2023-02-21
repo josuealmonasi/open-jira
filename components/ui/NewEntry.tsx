@@ -3,11 +3,14 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 import SaveIcon from '@mui/icons-material/Save'
 import { Button, TextField } from '@mui/material'
 import Box from '@mui/material/Box'
-import { ChangeEvent, FC, PropsWithChildren, useState } from 'react'
+import { EntriesContext } from 'context/entries'
+import { ChangeEvent, FC, PropsWithChildren, useContext, useState } from 'react'
 
 interface INewEntryProps extends PropsWithChildren {}
 
 export const NewEntry: FC<INewEntryProps> = ({}) => {
+  const { addNewEntry } = useContext(EntriesContext)
+
   const [isAdding, setIsAdding] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState<string>('')
   const [touched, setTouched] = useState<boolean>(false)
@@ -23,11 +26,14 @@ export const NewEntry: FC<INewEntryProps> = ({}) => {
   }
 
   const handleOnSave = () => {
-    console.log({ inputValue })
+    addNewEntry(inputValue)
+    setTouched(false)
+    setInputValue('')
+    setIsAdding(false)
   }
 
   return (
-    <Box>
+    <Box padding={1}>
       {isAdding ? (
         <>
           <TextField

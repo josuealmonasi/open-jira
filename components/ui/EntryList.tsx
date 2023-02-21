@@ -26,7 +26,7 @@ export const EntryList: FC<EntryListProps> = ({ status }) => {
           boxShadow: 'none',
         }}
       >
-        <List sx={{ opacity: 1 }}>
+        <List sx={{ opacity: 1, padding: 1 }}>
           {filteredEntries.map(e => (
             <EntryCard key={e._id} entry={e} />
           ))}

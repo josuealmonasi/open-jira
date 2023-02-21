@@ -37,7 +37,7 @@ const HomePage: NextPage = () => {
           >
             <CardHeader title='In Progress' />
 
-            <CardContent sx={{ margin: 0, padding: 0 }}>
+            <CardContent sx={{ margin: 0, padding: 1 }}>
               <EntryList status='in-progress' />
             </CardContent>
           </Card>
@@ -54,7 +54,7 @@ const HomePage: NextPage = () => {
           >
             <CardHeader title='Done' />
 
-            <CardContent sx={{ margin: 0, padding: 0 }}>
+            <CardContent sx={{ margin: 0, padding: 1 }}>
               <EntryList status='completed' />
             </CardContent>
           </Card>
