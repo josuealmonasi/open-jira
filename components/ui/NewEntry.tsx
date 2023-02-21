@@ -5,13 +5,14 @@ import { Button, TextField } from '@mui/material'
 import Box from '@mui/material/Box'
 import { EntriesContext } from 'context/entries'
 import { ChangeEvent, FC, PropsWithChildren, useContext, useState } from 'react'
+import { UIContext } from '../../context/ui/uIContext'
 
 interface INewEntryProps extends PropsWithChildren {}
 
 export const NewEntry: FC<INewEntryProps> = ({}) => {
   const { addNewEntry } = useContext(EntriesContext)
+  const { setIsAddingEntry, isAddingEntry } = useContext(UIContext)
 
-  const [isAdding, setIsAdding] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState<string>('')
   const [touched, setTouched] = useState<boolean>(false)
 
@@ -22,19 +23,19 @@ export const NewEntry: FC<INewEntryProps> = ({}) => {
   const handleCancel = (): void => {
     setTouched(false)
     setInputValue('')
-    setIsAdding(false)
+    setIsAddingEntry(false)
   }
 
   const handleOnSave = () => {
     addNewEntry(inputValue)
     setTouched(false)
     setInputValue('')
-    setIsAdding(false)
+    setIsAddingEntry(false)
   }
 
   return (
     <Box padding={1}>
-      {isAdding ? (
+      {isAddingEntry ? (
         <>
           <TextField
             fullWidth
@@ -76,7 +77,7 @@ export const NewEntry: FC<INewEntryProps> = ({}) => {
           color='info'
           fullWidth
           startIcon={<AddCircleOutlineRoundedIcon />}
-          onClick={() => setIsAdding(true)}
+          onClick={() => setIsAddingEntry(true)}
         >
           Add task
         </Button>
