@@ -1,17 +1,26 @@
 import { Card, CardActionArea, CardActions, CardContent, Typography } from '@mui/material'
 import { Entry } from 'interfaces'
-import { DragEvent, FC, PropsWithChildren, ReactNode, useEffect, useState } from 'react'
+import {
+  DragEvent,
+  FC,
+  PropsWithChildren,
+  ReactNode,
+  useEffect,
+  useState,
+  useContext,
+} from 'react'
+import { UIContext } from '../../context/ui/uIContext'
 
 type EntryCardProps = {
   entry: Entry
 } & PropsWithChildren
 
 export const EntryCard: FC<EntryCardProps> = ({ entry }) => {
-  const handleDragStart = (event: DragEvent): void =>
-    event.dataTransfer.setData('text', entry._id)
+  const { startDragging, endDragging, isDragging } = useContext(UIContext)
 
-  const handleOnDragEnd = () => {
-    console.log('drag end')
+  const handleDragStart = (event: DragEvent): void => {
+    startDragging()
+    event.dataTransfer.setData('text', entry._id)
   }
 
   /* Prevents hydration problems */
@@ -31,12 +40,17 @@ export const EntryCard: FC<EntryCardProps> = ({ entry }) => {
 
   return (
     <Card
-      sx={{ marginTop: 1, marginBottom: 1, backgroundColor: '#e9e6ff' }}
+      sx={{
+        marginTop: 1,
+        marginBottom: 1,
+        backgroundColor: isDragging ? '#bcb3fc' : '#e9e6ff',
+        transition: 'backgroundColor 250ms ease-in-out',
+      }}
       elevation={0}
       /* Drag Events */
       draggable
       onDragStart={handleDragStart}
-      onDragEnd={handleOnDragEnd}
+      onDragEnd={() => endDragging()}
     >
       <CardActionArea>
         <CardContent>

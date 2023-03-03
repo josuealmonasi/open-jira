@@ -3,6 +3,7 @@ import { EntryCard } from 'components/ui'
 import { EntriesContext } from 'context/entries'
 import { EntryStatus } from 'interfaces'
 import { DragEvent, FC, PropsWithChildren, useContext, useMemo } from 'react'
+import { UIContext } from '../../context/ui/uIContext'
 
 type EntryListProps = {
   status: EntryStatus
@@ -10,6 +11,7 @@ type EntryListProps = {
 
 export const EntryList: FC<EntryListProps> = ({ status }) => {
   const { entries } = useContext(EntriesContext)
+  const { isDragging } = useContext(UIContext)
 
   const handleOnDropEvent = (event: DragEvent) => {
     const id = event.dataTransfer.getData('text')
@@ -32,11 +34,17 @@ export const EntryList: FC<EntryListProps> = ({ status }) => {
         sx={{
           height: 'calc(100vh - 200px)',
           overflow: 'scroll',
-          backgroundColor: 'transparent',
           boxShadow: 'none',
+          border: isDragging ? 'dashed #cacaca 1px' : 'none',
         }}
       >
-        <List sx={{ opacity: 1, padding: 1 }}>
+        <List
+          sx={{
+            opacity: isDragging ? 0.4 : 1,
+            padding: 1,
+            transition: 'all 250ms',
+          }}
+        >
           {filteredEntries.map(e => (
             <EntryCard key={e._id} entry={e} />
           ))}
