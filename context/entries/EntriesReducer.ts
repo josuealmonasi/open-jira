@@ -2,7 +2,7 @@ import { EntriesProviderState } from 'context/entries'
 import { Entry } from 'interfaces'
 
 type EntriesActiontype = {
-  type: '[Entry] - Add Entry'
+  type: '[Entry] - Add Entry' | '[Entry] - Update Entry'
   payload: Entry
 }
 

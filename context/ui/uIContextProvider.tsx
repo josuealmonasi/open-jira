@@ -15,30 +15,31 @@ const INITIAL_STATE: UIState = {
 
 export const UIContextProvider: FC<PropsWithChildren> = ({ children }) => {
   /* Closes sidemenu */
-  const openSideMenu = (): void => dispatch({ type: 'UI - Open Sidebar', payload: state })
+  const openSideMenu = (): void =>
+    dispatch({ type: '[UI] - Open Sidebar', payload: state })
 
   /* Opens sidemenu */
   const closeSideMenu = (): void =>
-    dispatch({ type: 'UI - Close Sidebar', payload: state })
+    dispatch({ type: '[UI] - Close Sidebar', payload: state })
 
   /* Adding entry */
   const setIsAddingEntry = (isAdding: boolean): void =>
     dispatch({
-      type: 'UI - Set isAddingEntry',
+      type: '[UI] - Set isAddingEntry',
       payload: isAdding,
     })
 
   /* Start dragging */
   const startDragging = (): void =>
     dispatch({
-      type: 'UI - Start Dragging',
+      type: '[UI] - Start Dragging',
       payload: state,
     })
 
   /* End dragging */
   const endDragging = (): void =>
     dispatch({
-      type: 'UI - End Dragging',
+      type: '[UI] - End Dragging',
       payload: state,
     })
 
