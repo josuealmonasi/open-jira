@@ -10,12 +10,14 @@ type EntryListProps = {
 } & PropsWithChildren
 
 export const EntryList: FC<EntryListProps> = ({ status }) => {
-  const { entries } = useContext(EntriesContext)
-  const { isDragging } = useContext(UIContext)
+  const { entries, updateEntry } = useContext(EntriesContext)
+  const { isDragging, endDragging } = useContext(UIContext)
 
   const handleOnDropEvent = (event: DragEvent) => {
-    const id = event.dataTransfer.getData('text')
-    console.log({ id })
+    const entry = JSON.parse(event.dataTransfer.getData('text'))
+    entry.status = status
+    updateEntry(entry)
+    endDragging()
   }
 
   const filteredEntries = useMemo(

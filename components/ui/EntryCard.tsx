@@ -20,7 +20,7 @@ export const EntryCard: FC<EntryCardProps> = ({ entry }) => {
 
   const handleDragStart = (event: DragEvent): void => {
     startDragging()
-    event.dataTransfer.setData('text', entry._id)
+    event.dataTransfer.setData('text', JSON.stringify(entry))
   }
 
   /* Prevents hydration problems */

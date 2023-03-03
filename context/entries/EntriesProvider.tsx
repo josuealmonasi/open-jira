@@ -43,8 +43,11 @@ export const EntriesProvider: FC<PropsWithChildren> = ({ children }) => {
       createdAt: Date.now(),
       status: 'pending',
     }
-
     dispatch({ type: '[Entry] - Add Entry', payload: newEntry })
+  }
+
+  const updateEntry = (entry: Entry) => {
+    dispatch({ type: '[Entry] - Update Entry', payload: entry })
   }
   return (
     <EntriesContext.Provider
@@ -52,6 +55,7 @@ export const EntriesProvider: FC<PropsWithChildren> = ({ children }) => {
         ...state,
         /* Methods */
         addNewEntry,
+        updateEntry,
       }}
     >
       {children}
