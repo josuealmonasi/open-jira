@@ -19,7 +19,7 @@ const INITIAL_STATE: EntriesProviderState = {
     {
       _id: uuidv4(),
       description:
-        'Dolor veniam fugiat proident nostrud exercitation consequat pariatur ea Lorem incididunt qui ex.',
+        'Dolor veniam fugiat proident nostrud exercitation consequat pariatur ea Lorem incididunt qui.',
       status: 'in-progress',
       createdAt: 1676338569244 - 100000,
     },

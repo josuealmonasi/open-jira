@@ -1,6 +1,6 @@
 import { Card, CardActionArea, CardActions, CardContent, Typography } from '@mui/material'
-import { DragEvent, FC, PropsWithChildren } from 'react'
 import { Entry } from 'interfaces'
+import { DragEvent, FC, PropsWithChildren, ReactNode, useEffect, useState } from 'react'
 
 type EntryCardProps = {
   entry: Entry
@@ -13,6 +13,21 @@ export const EntryCard: FC<EntryCardProps> = ({ entry }) => {
   const handleOnDragEnd = () => {
     console.log('drag end')
   }
+
+  /* Prevents hydration problems */
+  const [date, setDate] = useState<ReactNode>(null)
+  const parsedDate = (ms: number): ReactNode => (
+    <Typography variant='body2'>
+      <strong>Modified: </strong>
+      {new Date(ms).toLocaleDateString()}
+      <strong> at </strong>
+      {new Date(ms).toLocaleTimeString()}
+    </Typography>
+  )
+
+  useEffect(() => {
+    setDate(parsedDate(entry.createdAt))
+  }, [entry.createdAt])
 
   return (
     <Card
@@ -29,12 +44,7 @@ export const EntryCard: FC<EntryCardProps> = ({ entry }) => {
         </CardContent>
 
         <CardActions sx={{ display: 'flex', justifyContent: 'end', paddingRight: 1.5 }}>
-          <Typography variant='body2'>
-            <strong>Modified: </strong>
-            {new Date(entry.createdAt).toLocaleDateString()}
-            <strong> at </strong>
-            {new Date(entry.createdAt).toLocaleTimeString()}
-          </Typography>
+          {date}
         </CardActions>
       </CardActionArea>
     </Card>
