@@ -5,9 +5,9 @@ import {
   FC,
   PropsWithChildren,
   ReactNode,
+  useContext,
   useEffect,
   useState,
-  useContext,
 } from 'react'
 import { UIContext } from '../../context/ui/uIContext'
 
@@ -20,7 +20,7 @@ export const EntryCard: FC<EntryCardProps> = ({ entry }) => {
 
   const handleDragStart = (event: DragEvent): void => {
     startDragging()
-    event.dataTransfer.setData('text', JSON.stringify(entry))
+    event.dataTransfer.setData('entry', JSON.stringify(entry))
   }
 
   /* Prevents hydration problems */

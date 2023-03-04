@@ -14,7 +14,7 @@ export const EntryList: FC<EntryListProps> = ({ status }) => {
   const { isDragging, endDragging } = useContext(UIContext)
 
   const handleOnDropEvent = (event: DragEvent) => {
-    const entry = JSON.parse(event.dataTransfer.getData('text'))
+    const entry = JSON.parse(event.dataTransfer.getData('entry'))
     entry.status = status
     updateEntry(entry)
     endDragging()
