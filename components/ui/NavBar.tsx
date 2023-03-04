@@ -4,7 +4,11 @@ import { Sidebar } from 'components/ui'
 import { UIContext } from 'context/ui'
 import { FC, useContext } from 'react'
 
-export const NavBar: FC = () => {
+interface NavBarProps {
+  name?: string
+}
+
+export const NavBar: FC<NavBarProps> = ({ name = 'Open jira' }) => {
   const { sideMenuOpen, openSideMenu, closeSideMenu } = useContext(UIContext)
 
   const handleOnClose = (): void => {
@@ -35,7 +39,7 @@ export const NavBar: FC = () => {
             component='div'
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            OpenJira
+            {name}
           </Typography>
         </Toolbar>
       </AppBar>

@@ -6,15 +6,20 @@ import { FC, ReactNode } from 'react'
 interface ILayoutProps {
   title?: string
   children?: ReactNode | undefined
+  appName?: string
 }
 
-export const Layout: FC<ILayoutProps> = ({ title = 'Open - Jira', children }) => (
+export const Layout: FC<ILayoutProps> = ({
+  title = 'Open - Jira',
+  appName,
+  children,
+}) => (
   <Box sx={{ flexGrow: 1 }}>
     <Head>
       <title>{title}</title>
     </Head>
 
-    <NavBar />
+    <NavBar name={appName} />
 
     <Box sx={{ padding: '10px 20px', backgroundColor: '#FFFFFF' }}>{children}</Box>
   </Box>
