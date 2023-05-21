@@ -29,7 +29,7 @@ export const connect = async () => {
   }
 
   console.log('=> using new database connection')
-  await mongoose.connect('process.env.MONGODB_URI')
+  await mongoose.connect(process.env.MONGODB_URL || '')
 
   mongoConnection.isConnected = 1
 }

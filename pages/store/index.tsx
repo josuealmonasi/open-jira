@@ -20,12 +20,12 @@ export const getServerSideProps: GetServerSideProps = async _ctx => {
     apiVersion: '2022-11-15',
   })
 
-  const proces = await stripe.prices.list({
+  const process = await stripe.prices.list({
     limit: 10,
     expand: ['data.product'],
   })
 
-  const data = proces.data
+  const data = process.data
     .filter(item => item.active)
     .map(item => ({
       id: item.id,

@@ -11,3 +11,13 @@
 ```
 mongodb://localhost:27017/entriesdb
 ```
+
+## Config env variables
+
+## Populate DB
+
+Call
+
+```
+localhost:3000/api/seed
+```
