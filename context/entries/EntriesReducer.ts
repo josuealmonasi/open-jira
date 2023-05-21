@@ -1,14 +1,14 @@
 import { EntriesProviderState } from 'context/entries'
 import { Entry } from 'interfaces'
 
-type EntriesActiontype = {
-  type: '[Entry] - Add Entry' | '[Entry] - Update Entry'
-  payload: Entry
-}
+type EntriesActionType =
+  | { type: '[Entry] - Add Entry'; payload: Entry }
+  | { type: '[Entry] - Update Entry'; payload: Entry }
+  | { type: '[Entry] - Refresh Entries'; payload: Entry[] }
 
 export const EntriesReducer = (
   state: EntriesProviderState,
-  action: EntriesActiontype,
+  action: EntriesActionType,
 ): EntriesProviderState => {
   switch (action.type) {
     case '[Entry] - Add Entry':
@@ -21,6 +21,9 @@ export const EntriesReducer = (
           entry._id === action.payload._id ? action.payload : entry,
         ),
       }
+
+    case '[Entry] - Refresh Entries':
+      return { ...state, entries: [...action.payload] }
 
     default:
       return state
