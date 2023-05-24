@@ -12,7 +12,7 @@ export const EntriesReducer = (
 ): EntriesProviderState => {
   switch (action.type) {
     case '[Entry] - Add Entry':
-      return { ...state, entries: [...state.entries, action.payload] }
+      return { ...state, entries: [action.payload, ...state.entries] }
 
     case '[Entry] - Update Entry':
       return {

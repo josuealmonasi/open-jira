@@ -12,6 +12,7 @@ const entrySchema = new Schema({
       values: ['pending', 'in-progress', 'completed'],
       message: 'Invalid {VALUE} status',
     },
+    default: 'pending',
   },
 })
 

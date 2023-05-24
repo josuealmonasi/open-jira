@@ -56,6 +56,7 @@ export const NewEntry: FC<INewEntryProps> = ({}) => {
               variant='outlined'
               color='success'
               startIcon={<SaveIcon />}
+              disabled={inputValue.length <= 0}
               onClick={handleOnSave}
             >
               Save
