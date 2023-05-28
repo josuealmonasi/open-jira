@@ -16,5 +16,5 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
   await Entry.insertMany(seedData.entries)
   await db.disconnect()
 
-  res.status(200).json({ name: 'Example' })
+  return res.status(200).json({ name: 'Example' })
 }

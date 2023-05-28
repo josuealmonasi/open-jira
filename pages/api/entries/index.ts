@@ -26,11 +26,18 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
  * @param res
  */
 const getEntries = async (res: NextApiResponse<Data>) => {
-  await db.connect()
-  const entries = await Entry.find().sort({ createdAt: 'desc' })
-  await db.disconnect()
+  try {
+    await db.connect()
+    const entries = await Entry.find().sort({ createdAt: 'desc' })
+    await db.disconnect()
 
-  res.status(200).json(entries)
+    return res.status(200).json(entries)
+  } catch (error) {
+    await db.disconnect()
+    console.log(error)
+
+    return res.status(500).json({ message: 'Something went wrong' })
+  }
 }
 
 /**
@@ -50,11 +57,11 @@ const postEntry = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     console.log('Entry created successfully')
     await db.disconnect()
 
-    res.status(201).json(newEntry)
+    return res.status(201).json(newEntry)
   } catch (error) {
     await db.disconnect()
     console.log(error)
 
-    res.status(500).json({ message: 'Something went wrong' })
+    return res.status(500).json({ message: 'Something went wrong' })
   }
 }

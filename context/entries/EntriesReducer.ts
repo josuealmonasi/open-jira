@@ -17,9 +17,10 @@ export const EntriesReducer = (
     case '[Entry] - Update Entry':
       return {
         ...state,
-        entries: state.entries.map(entry =>
-          entry._id === action.payload._id ? action.payload : entry,
-        ),
+        entries: [
+          action.payload,
+          ...state.entries.filter(entry => entry._id !== action.payload._id),
+        ],
       }
 
     case '[Entry] - Refresh Entries':
